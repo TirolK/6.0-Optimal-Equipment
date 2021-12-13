@@ -215,15 +215,13 @@ def main(argv):
 
             [sg.Text('')],
 
-            [sg.Text('マテリアで追加できるサブステータスの量:'), sg.InputText(size=(10,1),default_text="00")], #59
-            # [sg.Text('マテリアの各ステータス上限値:'), sg.InputText(size=(10,1),default_text="230")],
             [sg.Text('')],
-            [sg.Checkbox("SSの値を固定する", default=True)], #60
+            [sg.Checkbox("SSの値を固定する", default=True)], #59
             [sg.Text('')],
-            [sg.Text('全火力に対するDoTの割合: '), sg.InputText(size=(10,1),default_text="0.1619")], #61
-            [sg.Text('全火力に対するウェポンスキルの割合(上記のDoT攻撃は含まない): '), sg.InputText(size=(10,1),default_text="0.758693912")], #62
+            [sg.Text('全火力に対するDoTの割合: '), sg.InputText(size=(10,1),default_text="0.1619")], #60
+            [sg.Text('全火力に対するウェポンスキルの割合(上記のDoT攻撃は含まない): '), sg.InputText(size=(10,1),default_text="0.758693912")], #61
             [sg.Text('')],
-            [sg.Checkbox('DHを排除する', default=False)], #63
+            [sg.Checkbox('DHを排除する', default=False)], #62
             [sg.Text('')],
             [sg.Button('Calc',size=(60,3))],
             [sg.Text('加算分最適値（括弧内はマテリアのみ）:'), sg.Text(key='-result-')],
@@ -262,11 +260,11 @@ def main(argv):
 
       DH_limit, CRIT_limit, DET_limit, SS_limit = limit_calc(weapon,head,body,hand,leg,foot,ear,neck,arm,finger1,finger2)
 
-      Status_max = int(values[59])
-      fixed_ss = values[60]
-      dot_rate = float(values[61])
-      GCD_rate = float(values[62])
-      DH_0 = values[63]
+      Status_max = weapon[4]+head[4]+body[4]+hand[4]+leg[4]+foot[4]+ear[4]+neck[4]+arm[4]+finger1[4]+finger2[4]
+      fixed_ss = values[59]
+      dot_rate = float(values[60])
+      GCD_rate = float(values[61])
+      DH_0 = values[62]
 
       result = calc(DH_min, DET_min, CRIT_min, SS_min, DH_limit, CRIT_limit, DET_limit, SS_limit, Status_max, fixed_ss, dot_rate, GCD_rate, DH_0)
       window['-result_dh-'].update(str(result[0])+str(" ("+str(result[0]-DH_min)+")"))
