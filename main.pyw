@@ -57,10 +57,10 @@ def limit_calc(weapon,head,body,hand,leg,foot,ear,neck,arm,finger1,finger2):
   DET_limit = 0
   SS_limit = 0
   # weapon
-  DH_limit   += min(max(weapon[0:3])-weapon[0], weapon[4]) + over_status
-  CRIT_limit += min(max(weapon[0:3])-weapon[1], weapon[4]) + over_status
-  DET_limit  += min(max(weapon[0:3])-weapon[2], weapon[4]) + over_status
-  SS_limit   += min(max(weapon[0:3])-weapon[3], weapon[4]) + over_status
+  DH_limit   += min(max(weapon[0:4])-weapon[0], weapon[4]) + over_status
+  CRIT_limit += min(max(weapon[0:4])-weapon[1], weapon[4]) + over_status
+  DET_limit  += min(max(weapon[0:4])-weapon[2], weapon[4]) + over_status
+  SS_limit   += min(max(weapon[0:4])-weapon[3], weapon[4]) + over_status
   # head
   DH_limit   += min(max(head[0:3])-head[0], head[4]) + over_status
   CRIT_limit += min(max(head[0:3])-head[1], head[4]) + over_status
@@ -261,6 +261,7 @@ def main(argv):
       DH_limit, CRIT_limit, DET_limit, SS_limit = limit_calc(weapon,head,body,hand,leg,foot,ear,neck,arm,finger1,finger2)
 
       Status_max = weapon[4]+head[4]+body[4]+hand[4]+leg[4]+foot[4]+ear[4]+neck[4]+arm[4]+finger1[4]+finger2[4]
+
       fixed_ss = values[59]
       dot_rate = float(values[60])
       GCD_rate = float(values[61])
